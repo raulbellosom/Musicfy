@@ -1,0 +1,12 @@
+{
+  "name": "proMusic",
+  "displayName": "proMusic",
+  "expo": {
+    "name": "proMusic",
+    "slug": "proMusic",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
