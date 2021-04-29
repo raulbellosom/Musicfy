@@ -7,6 +7,7 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "description": "Proyecto de renta de grupos musicales v0.1 \n-Se comienza con el sistema de rutas y el sistema de log in y registro"
   }
 }
