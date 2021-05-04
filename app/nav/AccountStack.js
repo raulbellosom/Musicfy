@@ -1,5 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+
 import Account from "../screens/Account/Account";
 import Login from "../screens/Account/Login";
 import Register from "../screens/Account/Register";
@@ -9,7 +10,7 @@ const Stack = createStackNavigator();
 
 export default function AccountStack() {
   return (
-    <Stack.Navigator initialRouteName="logged">
+    <Stack.Navigator initialRouteName="account">
       <Stack.Screen
         name="logged"
         component={UserLogged}
@@ -18,7 +19,7 @@ export default function AccountStack() {
       <Stack.Screen
         name="account"
         component={Account}
-        options={{ title: "Identificate" }}
+        options={{ title: "Mi cuenta" }}
       />
       <Stack.Screen
         name="login"

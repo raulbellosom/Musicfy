@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Icon } from "react-native-elements";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createStackNavigator } from "@react-navigation/stack";
 import * as firebase from "firebase";
 
 import IdentifyStack from "./IdentifyStack";
-
-import AccountStack from "./AccountStack";
-import SearchStack from "./SearchStack";
-import MusicStack from "./MusicStack";
-
-const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
+import BottomNavUser from "./BottomNavUser";
+import { isEmpty } from "lodash";
 
 export default function Navigation() {
   const [login, setLogin] = useState(null);
+  const [typeUser, setTypeUser] = useState(null);
+  // console.log(typeUser);
+
+  const user = async () => await firebase.auth().currentUser;
+  // console.log(user);
+  if (!isEmpty(user) && user !== null) {
+    const email = user.email.split("-");
+    setTypeUser(email);
+    // console.log(email);
+  }
+
+  // console.log(email[0]);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -25,58 +30,23 @@ export default function Navigation() {
 
   return (
     <NavigationContainer>
-      {login !== false ? (
-        <Tab.Navigator
-          initialRouteName="account"
-          tabBarOptions={{
-            inactiveTintColor: "#646464",
-            activeTintColor: "#6600A1",
-          }}
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ color }) => screenOptions(route, color),
-          })}
-        >
-          <Tab.Screen
-            name="music"
-            component={MusicStack}
-            options={{ title: "Descubre" }}
-          />
+      {/* {login !== false && generateFunction("usr")} */}
 
-          <Tab.Screen
-            name="search"
-            component={SearchStack}
-            options={{ title: "Buscar" }}
-          />
-
-          <Tab.Screen
-            name="account"
-            component={AccountStack}
-            options={{ title: "Mi Cuenta" }}
-          />
-        </Tab.Navigator>
-      ) : (
-        <IdentifyStack />
-      )}
+      {login !== false ? <BottomNavUser /> : <IdentifyStack />}
     </NavigationContainer>
   );
 }
 
-function screenOptions(route, color) {
-  let iconName;
-  switch (route.name) {
-    case "account":
-      iconName = "account-circle-outline";
-      break;
-    case "search":
-      iconName = "magnify";
-      break;
-    case "music":
-      iconName = "music";
-      break;
-    default:
-      break;
-  }
-  return (
-    <Icon type="material-community" name={iconName} size={22} color={color} />
-  );
-}
+// function generateFunction(key){
+//   switch (key) {
+//     case "usr":
+//       <BottomNavUser />
+//       break;
+//     case "gm":
+//       <BottomNavGroup />
+//       break
+//     default:
+//       <IdentifyStack />
+//       break;
+//   }
+// }

@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { StyleSheet, Text, View, ScrollView, Image } from "react-native";
 import { Divider, Button, Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
-import LoginForm from "../../components/Account/LoginForm";
+import LoginFormGroup from "../../components/AccountGroup/LoginFormGroup";
 import Toast from "react-native-easy-toast";
 
 export default function Login() {
@@ -10,10 +10,11 @@ export default function Login() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.textHeader}>Inicia sesión</Text>
+        <Text style={styles.textHeader}>¡Que no pare la musica!</Text>
+        <Text style={styles.textHeader2}>El publico te esta esperando</Text>
       </View>
       <View style={styles.footer}>
-        <LoginForm toastRef={toastRef} />
+        <LoginFormGroup toastRef={toastRef} />
 
         <Divider style={styles.divider} />
         <Text
@@ -24,7 +25,7 @@ export default function Login() {
             marginBottom: 10,
           }}
         >
-          Inicia sesión con alguna red social
+          Inicia sesión con tu cuenta de Facebook
         </Text>
         <LoginFacebook />
         <CreateAccount />
@@ -41,7 +42,7 @@ function CreateAccount() {
       ¿Aún no te has registrado?{" "}
       <Text
         style={styles.btnRegister}
-        onPress={() => navigation.navigate("register")}
+        onPress={() => navigation.navigate("registerGroup")}
       >
         Registrarse aqui
       </Text>
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     paddingHorizontal: 20,
-    paddingBottom: 50,
+    paddingBottom: 30,
   },
   footer: {
     flex: 2,
@@ -87,6 +88,10 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
     fontSize: 30,
+  },
+  textHeader2: {
+    color: "#fff",
+    fontSize: 20,
   },
   logo: {
     width: "100%",

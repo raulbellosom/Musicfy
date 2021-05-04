@@ -1,20 +1,21 @@
 import React, { useRef } from "react";
-import { StyleSheet, Text, View, ScrollView, Image } from "react-native";
-import { Divider, Button, Icon } from "react-native-elements";
-import { useNavigation } from "@react-navigation/native";
-import LoginForm from "../../components/Account/LoginForm";
+import { StyleSheet, View, Text } from "react-native";
+import { Button, Divider } from "react-native-elements";
 import Toast from "react-native-easy-toast";
 
-export default function Login() {
+import RegisterFormGroup from "../../components/AccountGroup/RegisterFormGroup";
+
+export default function Register() {
   const toastRef = useRef();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.textHeader}>Inicia sesión</Text>
+        <Text style={styles.textHeaderTitle}>Registrate</Text>
+        <Text style={styles.textHeaderSub}>Hazte sonar en todas partes</Text>
       </View>
-      <View style={styles.footer}>
-        <LoginForm toastRef={toastRef} />
 
+      <View style={styles.footer}>
+        <RegisterFormGroup toastRef={toastRef} />
         <Divider style={styles.divider} />
         <Text
           style={{
@@ -24,35 +25,31 @@ export default function Login() {
             marginBottom: 10,
           }}
         >
-          Inicia sesión con alguna red social
+          Registrate con tu cuenta de Facebook
         </Text>
         <LoginFacebook />
-        <CreateAccount />
+        <Text
+          style={{
+            color: "#6600A1",
+            fontWeight: "900",
+            alignSelf: "center",
+            marginTop: 15,
+            marginBottom: 10,
+          }}
+        >
+          La membresia para grupos musicales tiene un costo de $99.00 por mes
+          que se requerira para finalizar el registro.
+        </Text>
       </View>
       <Toast ref={toastRef} position="center" opacity={0.9} />
     </View>
   );
 }
 
-function CreateAccount() {
-  const navigation = useNavigation();
-  return (
-    <Text style={styles.textRegister}>
-      ¿Aún no te has registrado?{" "}
-      <Text
-        style={styles.btnRegister}
-        onPress={() => navigation.navigate("register")}
-      >
-        Registrarse aqui
-      </Text>
-    </Text>
-  );
-}
-
 function LoginFacebook() {
   return (
     <Button
-      title={"Sing In with Facebook"}
+      title={"Sing Up with Facebook"}
       buttonStyle={styles.btnFacebook}
       icon={{
         type: "material-community",
@@ -76,31 +73,28 @@ const styles = StyleSheet.create({
     paddingBottom: 50,
   },
   footer: {
-    flex: 2,
+    flex: 3,
     backgroundColor: "#fff",
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
     paddingHorizontal: 20,
     paddingVertical: 30,
   },
-  textHeader: {
+  textHeaderTitle: {
     color: "#fff",
     fontWeight: "bold",
     fontSize: 30,
   },
-  logo: {
-    width: "100%",
-    height: 200,
+  textHeaderSub: {
+    color: "#fff",
+    fontSize: 20,
   },
-  textRegister: {
-    alignSelf: "center",
-    marginTop: 25,
-    marginBottom: 40,
-    color: "#6600A1",
-  },
-  btnRegister: {
-    color: "#6600A1",
-    fontWeight: "bold",
+  viewForm: {
+    marginRight: 30,
+    marginLeft: 30,
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    padding: 10,
   },
   divider: {
     backgroundColor: "#DC4D4D",

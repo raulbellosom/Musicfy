@@ -32,3 +32,8 @@ yarn add @react-navigation/native
 yarn add @react-navigation/bottom-tabs
 yarn add @react-navigation/stack
 yarn add @react-navigation/drawer
+
+
+###### Persmisions
+expo install expo-permissions o (yarn add expo-permissions)
+expo install expo-image-picker o (yarn add expo-image-picker)

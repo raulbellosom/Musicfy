@@ -17,7 +17,9 @@ export default function UserGuest() {
       </View>
       <View style={styles.footer}>
         <Text style={styles.title}>¡Ameniza tus eventos a lo grande!</Text>
-        <Text style={styles.text}>Inicia sesión, ¿Qué esperas?</Text>
+        <Text style={styles.text}>
+          Inicia sesión y encuentra tu musica favorita
+        </Text>
         <View style={styles.viewBtn}>
           <Button
             title="Soy un usuario"
@@ -30,7 +32,7 @@ export default function UserGuest() {
             titleStyle={{ color: "#6600A1" }}
             buttonStyle={styles.btnGrupo}
             containerStyle={styles.btnContainerGrupo}
-            onPress={() => navigation.navigate("login")}
+            onPress={() => navigation.navigate("loginGroup")}
           />
         </View>
       </View>

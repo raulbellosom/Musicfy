@@ -33,12 +33,12 @@ export default function RegisterForm(props) {
       firebase
         .auth()
         .createUserWithEmailAndPassword(
-          "usr-" + formData.email,
+          "gm-" + formData.email,
           formData.password
         )
         .then((response) => {
           setLoading(false);
-          navigation.navigate("account");
+          navigation.navigate("accountGroup");
         })
         .catch(() => {
           setLoading(false);
@@ -52,7 +52,9 @@ export default function RegisterForm(props) {
   };
   return (
     <View style={styles.formContainer}>
-      <Text style={styles.txtRegistrar}>Registrarse es totalmente gratis</Text>
+      <Text style={styles.txtRegistrar}>
+        Crea una cuenta para tu grupo musical
+      </Text>
       <Input
         placeholder="Correo electronico"
         containerStyle={styles.inputForm}
@@ -121,11 +123,10 @@ const styles = StyleSheet.create({
   },
   inputForm: {
     width: "100%",
-    // marginTop: 10,
   },
   txtRegistrar: {
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 18,
     paddingBottom: 10,
     color: "#6600A1",
   },

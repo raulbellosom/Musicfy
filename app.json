@@ -5,9 +5,14 @@
     "name": "proMusic",
     "slug": "proMusic",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "description": "Proyecto de renta de grupos musicales v0.1 \n-Se comienza con el sistema de rutas y el sistema de log in y registro"
+    "assetBundlePatterns": ["**/*"],
+    "description": "Proyecto de renta de grupos musicales v1.0\n-Se ha realizado el registro y loggin de usuarios y grupos musicales\n-El registro de las bandas debera continuar con el metodo de pago",
+    "android": {
+      "permissions": [
+        "CAMERA_ROLL",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
+    }
   }
 }

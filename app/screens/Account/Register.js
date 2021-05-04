@@ -16,6 +16,17 @@ export default function Register() {
 
       <View style={styles.footer}>
         <RegisterForm toastRef={toastRef} />
+        <Divider style={styles.divider} />
+        <Text
+          style={{
+            color: "#6600A1",
+            fontWeight: "900",
+            alignSelf: "center",
+            marginBottom: 10,
+          }}
+        >
+          Registrate con tu cuenta de Facebook
+        </Text>
         <LoginFacebook />
       </View>
       <Toast ref={toastRef} position="center" opacity={0.9} />
@@ -72,6 +83,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 10,
     padding: 10,
+  },
+  divider: {
+    backgroundColor: "#DC4D4D",
+    margin: 40,
   },
   btnFacebook: {
     backgroundColor: "#3b5998",
