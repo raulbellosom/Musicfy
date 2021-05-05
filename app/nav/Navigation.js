@@ -5,48 +5,25 @@ import * as firebase from "firebase";
 
 import IdentifyStack from "./IdentifyStack";
 import BottomNavUser from "./BottomNavUser";
-import { isEmpty } from "lodash";
 
 export default function Navigation() {
   const [login, setLogin] = useState(null);
-  const [typeUser, setTypeUser] = useState(null);
-  // console.log(typeUser);
-
-  const user = async () => await firebase.auth().currentUser;
-  // console.log(user);
-  if (!isEmpty(user) && user !== null) {
-    const email = user.email.split("-");
-    setTypeUser(email);
-    // console.log(email);
-  }
-
-  // console.log(email[0]);
+  const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       !user ? setLogin(false) : setLogin(true);
+      !user ? setLogin(false) : setUserInfo(user);
     });
   }, []);
 
   return (
     <NavigationContainer>
-      {/* {login !== false && generateFunction("usr")} */}
-
-      {login !== false ? <BottomNavUser /> : <IdentifyStack />}
+      {login !== false ? (
+        userInfo && <BottomNavUser userInfo={userInfo} />
+      ) : (
+        <IdentifyStack />
+      )}
     </NavigationContainer>
   );
 }
-
-// function generateFunction(key){
-//   switch (key) {
-//     case "usr":
-//       <BottomNavUser />
-//       break;
-//     case "gm":
-//       <BottomNavGroup />
-//       break
-//     default:
-//       <IdentifyStack />
-//       break;
-//   }
-// }

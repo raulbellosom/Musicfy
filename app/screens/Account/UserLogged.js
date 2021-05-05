@@ -32,7 +32,6 @@ export default function UserLogged() {
           setLoadingText={setLoadingText}
         />
       )}
-
       <AccountOptions
         userInfo={userInfo}
         toastRef={toastRef}
@@ -42,7 +41,9 @@ export default function UserLogged() {
         title="Cerrar sesión"
         buttonStyle={styles.btnCloseSesion}
         titleStyle={styles.btnCloseSesionText}
-        onPress={() => firebase.auth().signOut()}
+        onPress={() => {
+          firebase.auth().signOut();
+        }}
       />
       <Toast ref={toastRef} position="center" opacity={0.9} />
       <Loading text={loadingText} isVisible={loading} />

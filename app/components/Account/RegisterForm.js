@@ -38,7 +38,7 @@ export default function RegisterForm(props) {
         )
         .then((response) => {
           setLoading(false);
-          navigation.navigate("account");
+          navigation.navigate("identify");
         })
         .catch(() => {
           setLoading(false);
