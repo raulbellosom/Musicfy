@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Avatar } from "react-native-elements";
 import * as firebase from "firebase";
@@ -13,8 +13,12 @@ export default function InfoUser(props) {
     setLoadingText,
   } = props;
 
+  const [type, setType] = useState({});
+  useEffect(() => {
+    setType(email.split("`"));
+  }, [email]);
+
   const ChangeAvatar = async () => {
-    // const resultPermissions = await ImagePicker.getCameraPermissionsAsync();
     const resultPermissions = await Permissions.askAsync(Permissions.CAMERA);
     const resultPermissionsCamera = resultPermissions.permissions.camera.status;
 
@@ -86,7 +90,7 @@ export default function InfoUser(props) {
       </Avatar>
       <View>
         <Text style={styles.displayName}>
-          {displayName ? displayName : "Usuario"}
+          {displayName ? displayName : "new_user"}
         </Text>
         <Text>{email ? email : "Social Login"}</Text>
       </View>
@@ -109,6 +113,5 @@ const styles = StyleSheet.create({
   },
   displayName: {
     fontWeight: "bold",
-    paddingBottom: 10,
   },
 });

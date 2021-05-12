@@ -14,7 +14,7 @@ export default function AccountStack() {
       <Stack.Screen
         name="logged"
         component={UserLogged}
-        options={{ title: "Mi Cuenta" }}
+        options={{ title: "Mi cuenta" }}
       />
       <Stack.Screen
         name="account"

@@ -16,23 +16,23 @@ export default function UserGuest() {
         <Text style={styles.textLogo}>MusicFy</Text>
       </View>
       <View style={styles.footer}>
-        <Text style={styles.title}>¡Ameniza tus eventos a lo grande!</Text>
+        <Text style={styles.title}>Comienza a sonar en todas partes</Text>
         <Text style={styles.text}>
-          Inicia sesión y encuentra tu musica favorita
+          Incribe a tu grupo musical con nosotros y ponte en contacto con el
+          publico.
         </Text>
         <View style={styles.viewBtn}>
-          <Button
+          {/* <Button
             title="Soy un usuario"
             buttonStyle={styles.btnStyle}
             containerStyle={styles.btnContainer}
             onPress={() => navigation.navigate("login")}
-          />
+          /> */}
           <Button
-            title="Soy un grupo musical"
-            titleStyle={{ color: "#6600A1" }}
-            buttonStyle={styles.btnGrupo}
-            containerStyle={styles.btnContainerGrupo}
-            onPress={() => navigation.navigate("loginGroup")}
+            title="Identificate"
+            buttonStyle={styles.btnStyle}
+            containerStyle={styles.btnContainer}
+            onPress={() => navigation.navigate("login")}
           />
         </View>
       </View>
@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
   text: {
     color: "grey",
     marginTop: 5,
+    marginBottom: 10,
   },
   viewBtn: {
     flex: 1,

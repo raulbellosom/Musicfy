@@ -12,9 +12,11 @@ const Tab = createBottomTabNavigator();
 
 export default function BottomNavUser(props) {
   const { userInfo } = props;
-  const [type, setType] = useState(userInfo.email.split("-"));
-  // console.log(type);
-  // const typeUser = userInfo.email.split("-");
+  const [type, setType] = useState({});
+
+  useEffect(() => {
+    setType(userInfo.email.split("`"));
+  }, [userInfo]);
 
   return (
     <Tab.Navigator
@@ -32,14 +34,14 @@ export default function BottomNavUser(props) {
         component={MusicStack}
         options={{ title: "Descubre" }}
       />
-      {type[0] == "usr" && (
+      {type[0] === "usr" && (
         <Tab.Screen
           name="search"
           component={SearchStack}
           options={{ title: "Buscar" }}
         />
       )}
-      {type[0] == "gm" && (
+      {type[0] === "gm" && (
         <Tab.Screen
           name="agenda"
           component={AgendaStack}
@@ -49,7 +51,7 @@ export default function BottomNavUser(props) {
       <Tab.Screen
         name="identify"
         component={AccountStack}
-        options={{ title: "Mi Cuenta" }}
+        options={{ title: "Configuración de la cuenta" }}
       />
     </Tab.Navigator>
   );

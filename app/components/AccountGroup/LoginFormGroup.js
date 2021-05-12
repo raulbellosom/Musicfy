@@ -27,7 +27,7 @@ export default function LoginForm(props) {
       setLoading(true);
       firebase
         .auth()
-        .signInWithEmailAndPassword("gm-" + formData.email, formData.password)
+        .signInWithEmailAndPassword("gm`" + formData.email, formData.password)
         .then(() => {
           setLoading(false);
           // navigation.navigate("account", { screen: "logged" });

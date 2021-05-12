@@ -16,8 +16,8 @@ export default function Register() {
 
       <View style={styles.footer}>
         <RegisterForm toastRef={toastRef} />
-        <Divider style={styles.divider} />
-        <Text
+        {/* <Divider style={styles.divider} /> */}
+        {/* <Text
           style={{
             color: "#6600A1",
             fontWeight: "900",
@@ -26,28 +26,28 @@ export default function Register() {
           }}
         >
           Registrate con tu cuenta de Facebook
-        </Text>
-        <LoginFacebook />
+        </Text> */}
+        {/* <LoginFacebook /> */}
       </View>
       <Toast ref={toastRef} position="center" opacity={0.9} />
     </View>
   );
 }
 
-function LoginFacebook() {
-  return (
-    <Button
-      title={"Sing Up with Facebook"}
-      buttonStyle={styles.btnFacebook}
-      icon={{
-        type: "material-community",
-        name: "facebook",
-        color: "#fff",
-      }}
-      onPress={() => console.log("loginFacebook")}
-    />
-  );
-}
+// function LoginFacebook() {
+//   return (
+//     <Button
+//       title={"Sing Up with Facebook"}
+//       buttonStyle={styles.btnFacebook}
+//       icon={{
+//         type: "material-community",
+//         name: "facebook",
+//         color: "#fff",
+//       }}
+//       onPress={() => console.log("loginFacebook")}
+//     />
+//   );
+// }
 
 const styles = StyleSheet.create({
   container: {

@@ -8,6 +8,7 @@ import UserGuest from "../screens/Account/UserGuest";
 import LoginGroup from "../screens/AccountGroup/LoginGroup";
 import RegisterGroup from "../screens/AccountGroup/RegisterGroup";
 import AccountGroup from "../screens/AccountGroup/AccountGroup";
+// import RegisterPhone from "../screens/AccountGroup/RegisterPhone";
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ const IdentifyStack = ({ navigation }) => {
       <Stack.Screen name="loginGroup" component={LoginGroup} />
       <Stack.Screen name="registerGroup" component={RegisterGroup} />
       <Stack.Screen name="accountGroup" component={AccountGroup} />
+      {/* <Stack.Screen name="num" component={RegisterPhone} /> */}
     </Stack.Navigator>
   );
 };

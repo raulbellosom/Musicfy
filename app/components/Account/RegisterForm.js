@@ -32,13 +32,10 @@ export default function RegisterForm(props) {
       setLoading(true);
       firebase
         .auth()
-        .createUserWithEmailAndPassword(
-          "usr-" + formData.email,
-          formData.password
-        )
+        .createUserWithEmailAndPassword(formData.email, formData.password)
         .then((response) => {
           setLoading(false);
-          navigation.navigate("identify");
+          navigation.navigate("account");
         })
         .catch(() => {
           setLoading(false);

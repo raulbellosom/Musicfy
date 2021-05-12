@@ -33,7 +33,7 @@ export default function RegisterForm(props) {
       firebase
         .auth()
         .createUserWithEmailAndPassword(
-          "gm-" + formData.email,
+          "gm`" + formData.email,
           formData.password
         )
         .then((response) => {

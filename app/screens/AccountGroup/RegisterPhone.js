@@ -2,67 +2,25 @@ import React, { useRef } from "react";
 import { StyleSheet, Text, View, ScrollView, Image } from "react-native";
 import { Divider, Button, Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
-import LoginForm from "../../components/Account/LoginForm";
+// import LoginFormGroup from "../../components/AccountGroup/LoginFormGroup";
+import RegisterPhoneForm from "../../components/AccountGroup/RegisterPhoneForm";
 import Toast from "react-native-easy-toast";
 
-export default function Login() {
+export default function RegisterPhone() {
   const toastRef = useRef();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.textHeader}>Inicia sesión</Text>
+        <Text style={styles.textHeader}>¡Que no pare la musica!</Text>
+        <Text style={styles.textHeader2}>El publico te esta esperando</Text>
       </View>
       <View style={styles.footer}>
-        <LoginForm toastRef={toastRef} />
-
-        <Divider style={styles.divider} />
-        {/* <Text
-          style={{
-            color: "#6600A1",
-            fontWeight: "900",
-            alignSelf: "center",
-            marginBottom: 10,
-          }}
-        >
-          Inicia sesión con alguna red social
-        </Text> */}
-        {/* <LoginFacebook /> */}
-        <CreateAccount />
+        <RegisterPhoneForm toastRef={toastRef} />
       </View>
       <Toast ref={toastRef} position="center" opacity={0.9} />
     </View>
   );
 }
-
-function CreateAccount() {
-  const navigation = useNavigation();
-  return (
-    <Text style={styles.textRegister}>
-      ¿Aún no te has registrado?{" "}
-      <Text
-        style={styles.btnRegister}
-        onPress={() => navigation.navigate("register")}
-      >
-        Registrarse aqui
-      </Text>
-    </Text>
-  );
-}
-
-// function LoginFacebook() {
-//   return (
-//     <Button
-//       title={"Sing In with Facebook"}
-//       buttonStyle={styles.btnFacebook}
-//       icon={{
-//         type: "material-community",
-//         name: "facebook",
-//         color: "#fff",
-//       }}
-//       onPress={() => console.log("loginFacebook")}
-//     />
-//   );
-// }
 
 const styles = StyleSheet.create({
   container: {
@@ -73,10 +31,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     paddingHorizontal: 20,
-    paddingBottom: 50,
+    paddingBottom: 30,
   },
   footer: {
-    flex: 2,
+    flex: 3,
     backgroundColor: "#fff",
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
@@ -88,13 +46,17 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 30,
   },
+  textHeader2: {
+    color: "#fff",
+    fontSize: 20,
+  },
   logo: {
     width: "100%",
     height: 200,
   },
   textRegister: {
     alignSelf: "center",
-    // marginTop: 25,
+    marginTop: 25,
     marginBottom: 40,
     color: "#6600A1",
   },

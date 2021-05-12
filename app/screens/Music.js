@@ -5,6 +5,7 @@ export default function Music() {
   return (
     <View>
       <Text>Music...</Text>
+      <Text>Musica mamalona...</Text>
     </View>
   );
 }
