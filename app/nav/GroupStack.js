@@ -2,17 +2,18 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Icon } from "react-native-elements";
 
-import Account from "../screens/Account/Account";
-import Login from "../screens/Account/Login";
-import Register from "../screens/Account/Register";
-import UserLogged from "../screens/Account/UserLogged";
+import Profile from "../screens/Groups/Profile";
+import GuestProfile from "../screens/Groups/GuestProfile";
+import AddGroup from "../screens/Groups/AddGroup";
+import ProfileGroup from "../screens/Groups/ProfileGroup";
 
 const Stack = createStackNavigator();
 
-export default function AccountStack(props) {
+export default function GroupStack(props) {
   const { navigation } = props;
   return (
     <Stack.Navigator
+      initialRouteName="profile"
       screenOptions={{
         headerTintColor: "#6600A1",
         headerLeft: () => (
@@ -27,27 +28,26 @@ export default function AccountStack(props) {
           />
         ),
       }}
-      initialRouteName="account"
     >
       <Stack.Screen
-        name="account"
-        component={Account}
-        options={{ title: "Mi cuenta" }}
+        name="profile"
+        component={Profile}
+        options={{ title: "Mi perfil" }}
       />
       <Stack.Screen
-        name="logged"
-        component={UserLogged}
-        options={{ title: "Mi cuenta" }}
+        name="guest"
+        component={GuestProfile}
+        options={{ title: "Crear perfil" }}
       />
       <Stack.Screen
-        name="login"
-        component={Login}
-        options={{ title: "Iniciar Sesión" }}
+        name="add-group"
+        component={AddGroup}
+        options={{ title: "Añadir Grupo" }}
       />
       <Stack.Screen
-        name="register"
-        component={Register}
-        options={{ title: "Registrarse" }}
+        name="profile-group"
+        component={ProfileGroup}
+        options={{ title: "Mi Perfil" }}
       />
     </Stack.Navigator>
   );

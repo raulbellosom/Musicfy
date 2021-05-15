@@ -6,20 +6,23 @@ import * as firebase from "firebase";
 import AccountStack from "./AccountStack";
 import MusicStack from "./MusicStack";
 import AgendaStack from "./AgendaStack";
+import IdentifyStack from "./IdentifyStack";
+import GroupStack from "./GroupStack";
 
 const Tab = createBottomTabNavigator();
 
-export default function BottomNavUser(props) {
-  const { userInfo } = props;
-  const [type, setType] = useState({});
+export default function BottomNavUser() {
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    setType(userInfo.email.split("`"));
-  }, [userInfo]);
+    firebase.auth().onAuthStateChanged((user) => {
+      !user ? setUser(false) : setUser(true);
+    });
+  }, []);
 
   return (
     <Tab.Navigator
-      initialRouteName="identify"
+      initialRouteName={user ? "identify" : "music"}
       tabBarOptions={{
         inactiveTintColor: "#646464",
         activeTintColor: "#6600A1",
@@ -31,27 +34,29 @@ export default function BottomNavUser(props) {
       <Tab.Screen
         name="music"
         component={MusicStack}
-        options={{ title: "Descubre" }}
+        options={{ title: "Buscar" }}
       />
-      {type[0] === "usr" && (
-        <Tab.Screen
-          name="search"
-          component={SearchStack}
-          options={{ title: "Buscar" }}
-        />
-      )}
-      {type[0] === "gm" && (
+      {user && (
         <Tab.Screen
           name="agenda"
           component={AgendaStack}
           options={{ title: "Mi Agenda" }}
         />
       )}
-      <Tab.Screen
-        name="identify"
-        component={AccountStack}
-        options={{ title: "Configuración de la cuenta" }}
-      />
+      {user && (
+        <Tab.Screen
+          name="perfil"
+          component={GroupStack}
+          options={{ title: "Mi Perfil" }}
+        />
+      )}
+      {!user && (
+        <Tab.Screen
+          name="register"
+          component={IdentifyStack}
+          options={{ title: "Registrarse" }}
+        />
+      )}
     </Tab.Navigator>
   );
 }
@@ -59,7 +64,10 @@ export default function BottomNavUser(props) {
 function screenOptions(route, color) {
   let iconName;
   switch (route.name) {
-    case "identify":
+    case "register":
+      iconName = "account-circle-outline";
+      break;
+    case "perfil":
       iconName = "account-circle-outline";
       break;
     case "search":
@@ -78,5 +86,3 @@ function screenOptions(route, color) {
     <Icon type="material-community" name={iconName} size={22} color={color} />
   );
 }
-
-// export default BottomNavUser;

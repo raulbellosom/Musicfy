@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Button } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
 import Toast from "react-native-easy-toast";
 import * as firebase from "firebase";
+
 import Loading from "../../components/Loading";
 import InfoUser from "../../components/Account/InfoUser";
 import AccountOptions from "../../components/Account/AccountOptions";
@@ -12,6 +14,7 @@ export default function UserLogged() {
   const [loading, setLoading] = useState(false);
   const [loadingText, setLoadingText] = useState("");
   const [reloadUserInfo, setReloadUserInfo] = useState(false);
+  const navigation = useNavigation();
   const toastRef = useRef();
 
   useEffect(() => {
@@ -39,12 +42,31 @@ export default function UserLogged() {
           setReloadUserInfo={setReloadUserInfo}
         />
       )}
+      {/* <Button
+        title="Configuraciones de la cuenta"
+        buttonStyle={styles.btnConfig}
+        titleStyle={styles.btnConfigText}
+        icon={{
+          type: "material-community",
+          name: "cog-outline",
+          color: "#6600A1",
+        }}
+        onPress={() => {
+          console.log("ok");
+        }}
+      /> */}
       <Button
         title="Cerrar sesión"
         buttonStyle={styles.btnCloseSesion}
         titleStyle={styles.btnCloseSesionText}
+        icon={{
+          type: "material-community",
+          name: "logout",
+          color: "#6600A1",
+        }}
         onPress={() => {
           firebase.auth().signOut();
+          navigation.navigate("music", { screen: "music" });
         }}
       />
       <Toast ref={toastRef} position="center" opacity={0.9} />
@@ -72,4 +94,16 @@ const styles = StyleSheet.create({
   btnCloseSesionText: {
     color: "#6600A1",
   },
+  // btnConfig: {
+  //   marginTop: 30,
+  //   borderRadius: 0,
+  //   backgroundColor: "#fff",
+  //   borderTopWidth: 1,
+  //   borderTopColor: "#e3e3e3",
+  //   borderBottomWidth: 1,
+  //   borderBottomColor: "#e3e3e3",
+  // },
+  // btnConfigText: {
+  //   color: "#6600A1",
+  // },
 });

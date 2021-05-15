@@ -9,15 +9,20 @@
 import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Icon } from "react-native-elements";
 import * as firebase from "firebase";
 
 import AccountStack from "./AccountStack";
-import SearchStack from "./SearchStack";
 import MusicStack from "./MusicStack";
 import AgendaStack from "./AgendaStack";
+import GroupStack from "./GroupStack";
+import IdentifyStack from "./IdentifyStack";
+import DrawerNavigation from "./DrawerNavigation";
+import MainTabScreen from "./MainTabScreen";
 
-const Tab = createBottomTabNavigator();
+// const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function Navigation() {
   const [user, setUser] = useState(null);
@@ -27,9 +32,16 @@ export default function Navigation() {
       !user ? setUser(false) : setUser(true);
     });
   }, []);
+
   return (
     <NavigationContainer>
-      <Tab.Navigator
+      <Drawer.Navigator>
+        <Drawer.Screen name="Inicio" component={MainTabScreen} />
+        {/* <Drawer.Screen name="Mi Agenda" component={MainTabScreen} />
+        <Drawer.Screen name="Mi Perfil" component={GroupStack} /> */}
+        <Drawer.Screen name="Cuenta" component={AccountStack} />
+      </Drawer.Navigator>
+      {/* <Tab.Navigator
         initialRouteName="music"
         tabBarOptions={{
           inactiveTintColor: "#646464",
@@ -56,12 +68,19 @@ export default function Navigation() {
             options={{ title: "Mi Agenda" }}
           />
         )}
+        {user && (
+          <Tab.Screen
+            name="group"
+            component={GroupStack}
+            options={{ title: "Mi Perfil" }}
+          />
+        )}
         <Tab.Screen
           name="account"
           component={AccountStack}
-          options={{ title: "Mi cuenta" }}
+          options={{ title: "Cuenta" }}
         />
-      </Tab.Navigator>
+      </Tab.Navigator> */}
     </NavigationContainer>
   );
   // const [login, setLogin] = useState(null);
@@ -99,6 +118,9 @@ function screenOptions(route, color) {
       break;
     case "agenda":
       iconName = "book-outline";
+      break;
+    case "group":
+      iconName = "account-group-outline";
       break;
     default:
       break;

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Avatar } from "react-native-elements";
 import * as firebase from "firebase";
-import * as Permissions from "expo-permissions";
 import * as ImagePicker from "expo-image-picker";
 
 export default function InfoUser(props) {
@@ -13,14 +12,15 @@ export default function InfoUser(props) {
     setLoadingText,
   } = props;
 
-  const [type, setType] = useState({});
-  useEffect(() => {
-    setType(email.split("`"));
-  }, [email]);
+  // const [type, setType] = useState({});
+  // useEffect(() => {
+  //   setType(email.split("`"));
+  // }, [email]);
 
   const ChangeAvatar = async () => {
-    const resultPermissions = await Permissions.askAsync(Permissions.CAMERA);
-    const resultPermissionsCamera = resultPermissions.permissions.camera.status;
+    const resultPermissions =
+      await ImagePicker.requestMediaLibraryPermissionsAsync();
+    const resultPermissionsCamera = resultPermissions.status;
 
     if (resultPermissionsCamera === "denied") {
       toastRef.current.show("Es necesario aceptar los permisos de la galeria");
