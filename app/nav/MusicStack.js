@@ -2,7 +2,8 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Icon } from "react-native-elements";
 
-import Music from "../screens/Music";
+import Music from "../screens/Music/Music";
+import MusicInfo from "../screens/Music/MusicInfo";
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,7 @@ export default function MusicStack(props) {
         component={Music}
         options={{ title: "Encuentra tu grupo musical" }}
       />
+      <Stack.Screen name="info" component={MusicInfo} />
     </Stack.Navigator>
   );
 }

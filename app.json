@@ -8,13 +8,14 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "description": "Proyecto de renta de grupos musicales v1.0\n-Se ha realizado el registro y Login de usuarios y grupos musicales\n-El registro de las bandas deberá continuar con el método de pago\n-Sistema de navegación completo\n\n---Cambios y modificaciones 11-05-21\nconfiguraciones de la cuenta (nombre, email, contraseña) terminados\n\n-- Cambios y modificaciones 13-05-21 \nnuevo sistema de navegación tab bar y stack \n\n---Creacion de grupos musicales sin el formato final",
+    "description": "Proyecto de renta de grupos musicales v1.0\n-Se ha realizado el registro y Login de usuarios y grupos musicales\n-El registro de las bandas deberá continuar con el método de pago\n-Sistema de navegación completo\n\n---Cambios y modificaciones 11-05-21\nconfiguraciones de la cuenta (nombre, email, contraseña) terminados\n\n-- Cambios y modificaciones 13-05-21 \nnuevo sistema de navegación tab bar y stack \n\n---Creación de grupos musicales sin el formato final\n\n--- listado de bandas provisional y perfil provisional 20-05-21\n\n--- perfil que el cliente persive 23-05-21",
     "android": {
       "permissions": [
         "CAMERA_ROLL",
         "READ_EXTERNAL_STORAGE",
         "WRITE_EXTERNAL_STORAGE"
-      ]
+      ],
+      "package": "com.raulbellosom.proMusic"
     }
   }
 }

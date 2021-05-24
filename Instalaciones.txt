@@ -46,3 +46,6 @@ yarn add base-64
 
 #######fireSQL para  imitar sentencias sql en firebase
 yarn add firesql
+
+$########### El carrousel de imagenes
+yarn add react-native-snap-carousel

@@ -6,11 +6,13 @@ import {
   Image,
   Alert,
   Dimensions,
+  Text,
 } from "react-native";
 import { Icon, Avatar, Input, Button } from "react-native-elements";
 import uuid from "random-uuid-v4";
 import * as ImagePicker from "expo-image-picker";
 import { map, size, filter } from "lodash";
+import { validateNumberPhone } from "../../utils/validations";
 
 import { firebaseApp } from "../../utils/firebase";
 import firebase from "firebase/app";
@@ -24,12 +26,17 @@ export default function AddGroupForm(props) {
   const { toastRef, setIsLoading, navigation } = props;
   const [groupName, setGroupName] = useState("");
   const [groupAddress, setGroupAddress] = useState("");
+  const [groupNumber, setGroupNumber] = useState("");
   const [groupDescription, setGroupDescription] = useState("");
   const [imageSelected, setImageSelected] = useState([]);
 
   const addGroup = () => {
-    if (!groupName || !groupAddress || !groupDescription) {
+    if (!groupName || !groupAddress || !groupDescription || !groupNumber) {
       toastRef.current.show("Todos los campos son obligatorios.");
+    } else if (!validateNumberPhone(groupNumber)) {
+      toastRef.current.show(
+        "Ingrese un numero de telefono valido a 10 digitos"
+      );
     } else if (size(imageSelected) === 0) {
       toastRef.current.show("Debes subir al menos una foto.");
     } else {
@@ -40,6 +47,7 @@ export default function AddGroupForm(props) {
             name: groupName,
             address: groupAddress,
             description: groupDescription,
+            numberPhone: groupNumber,
             images: response,
             rating: 0,
             ratingTotal: 0,
@@ -81,7 +89,7 @@ export default function AddGroupForm(props) {
       })
     );
 
-    return imageBlob;
+    return imageBlob.reverse();
   };
 
   return (
@@ -91,7 +99,10 @@ export default function AddGroupForm(props) {
         setGroupName={setGroupName}
         setGroupAddress={setGroupAddress}
         setGroupDescription={setGroupDescription}
+        groupNumber={groupNumber}
+        setGroupNumber={setGroupNumber}
       />
+      <Text style={styles.textImages}>Agrega hasta 4 imagenes</Text>
       <UploadImage
         toastRef={toastRef}
         imageSelected={imageSelected}
@@ -124,18 +135,29 @@ function ImageGroup(props) {
 }
 
 function FormAdd(props) {
-  const { setGroupName, setGroupAddress, setGroupDescription } = props;
+  const { setGroupName, setGroupAddress, setGroupDescription, setGroupNumber } =
+    props;
   return (
     <View style={styles.viewForm}>
       <Input
         placeholder="Nombre del grupo musical"
         style={styles.input}
         onChange={(e) => setGroupName(e.nativeEvent.text)}
+        textContentType="name"
       />
       <Input
         placeholder="Dirección"
         containerStyle={styles.input}
         onChange={(e) => setGroupAddress(e.nativeEvent.text)}
+        textContentType="fullStreetAddress"
+      />
+      <Input
+        placeholder="Número de telefono formato 123 456 7890"
+        containerStyle={styles.input}
+        onChange={(e) => setGroupNumber(e.nativeEvent.text)}
+        textContentType="telephoneNumber"
+        keyboardType="phone-pad"
+        maxLength={10}
       />
       <Input
         placeholder="Descripción del grupo musical "
@@ -221,6 +243,7 @@ function UploadImage(props) {
 const styles = StyleSheet.create({
   scrollView: {
     height: "100%",
+    backgroundColor: "#fff",
   },
   viewForm: {
     marginLeft: 10,
@@ -262,5 +285,10 @@ const styles = StyleSheet.create({
     height: 200,
     marginBottom: 20,
     backgroundColor: "#e3e3e3",
+  },
+  textImages: {
+    marginLeft: 20,
+    color: "gray",
+    fontWeight: "bold",
   },
 });
