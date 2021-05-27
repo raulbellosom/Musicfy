@@ -94,7 +94,7 @@ export default function RegisterForm(props) {
         }
       />
       <Button
-        title="Unirse"
+        title="Registrarse"
         containerStyle={styles.btnContainRegister}
         buttonStyle={styles.btnRegister}
         onPress={onSubmit}
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   txtRegistrar: {
     fontWeight: "bold",
     fontSize: 20,
-    paddingBottom: 10,
+    paddingBottom: 20,
     color: "#6600A1",
   },
   btnContainRegister: {

@@ -1,5 +1,12 @@
 import React, { useRef } from "react";
-import { StyleSheet, Text, View, ScrollView, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Image,
+  Dimensions,
+} from "react-native";
 import { Divider, Button, Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import LoginForm from "../../components/Account/LoginForm";
@@ -8,7 +15,7 @@ import Toast from "react-native-easy-toast";
 export default function Login() {
   const toastRef = useRef();
   return (
-    <View style={styles.container}>
+    <ScrollView vertical style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.textHeader}>Inicia sesión</Text>
       </View>
@@ -30,7 +37,7 @@ export default function Login() {
         <CreateAccount />
       </View>
       <Toast ref={toastRef} position="center" opacity={0.9} />
-    </View>
+    </ScrollView>
   );
 }
 
@@ -64,37 +71,36 @@ function CreateAccount() {
 //   );
 // }
 
+const { height } = Dimensions.get("screen");
+
+const headerPadding = height * 0.1;
+const footerPadding = height * 0.1;
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     backgroundColor: "#451776",
   },
   header: {
-    flex: 1,
     justifyContent: "flex-end",
     paddingHorizontal: 20,
-    paddingBottom: 50,
+    paddingVertical: headerPadding,
   },
   footer: {
-    flex: 2,
     backgroundColor: "#fff",
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
     paddingHorizontal: 20,
-    paddingVertical: 30,
+    paddingVertical: footerPadding,
+    marginBottom: 0,
   },
   textHeader: {
     color: "#fff",
     fontWeight: "bold",
     fontSize: 30,
   },
-  logo: {
-    width: "100%",
-    height: 200,
-  },
   textRegister: {
     alignSelf: "center",
-    // marginTop: 25,
     marginBottom: 40,
     color: "#6600A1",
   },

@@ -17,6 +17,7 @@ export default function CarouselImages(props) {
       sliderWidth={width}
       itemWidth={width}
       renderItem={renderItem}
+      containerCustomStyle={{ width: width }}
     />
   );
 }

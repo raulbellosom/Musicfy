@@ -49,6 +49,7 @@ export default function AddGroupForm(props) {
             description: groupDescription,
             numberPhone: groupNumber,
             images: response,
+            active: 0,
             rating: 0,
             ratingTotal: 0,
             quantityVoting: 0,

@@ -1,12 +1,19 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Dimensions,
+  ScrollView,
+} from "react-native";
 import { Button } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 
 export default function UserGuest() {
   const navigation = useNavigation();
   return (
-    <View style={styles.viewBody}>
+    <ScrollView vertical style={styles.viewBody}>
       <View style={styles.header}>
         <Image
           source={require("../../../assets/img/proMusicNew.png")}
@@ -36,29 +43,31 @@ export default function UserGuest() {
           />
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const { height } = Dimensions.get("screen");
 const height_logo = height * 0.2;
+const headerPadding = height * 0.1;
+const footerPadding = height * 0.1;
 
 const styles = StyleSheet.create({
   viewBody: {
-    flex: 1,
+    flex: 2,
     backgroundColor: "#451776",
   },
   header: {
-    flex: 2,
     justifyContent: "center",
+    paddingVertical: headerPadding,
     alignItems: "center",
   },
   footer: {
-    flex: 1,
     backgroundColor: "#fff",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    paddingVertical: 50,
+    // marginVertical: footerPadding,
+    paddingVertical: footerPadding,
     paddingHorizontal: 50,
   },
   image: {
