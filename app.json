@@ -5,15 +5,15 @@
     "name": "proMusic",
     "slug": "proMusic",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "description": "Proyecto de renta de grupos musicales v1.0\n-Se ha realizado el registro y Login de usuarios y grupos musicales\n-El registro de las bandas deberá continuar con el método de pago\n-Sistema de navegación completo\n\n---Cambios y modificaciones 11-05-21\nconfiguraciones de la cuenta (nombre, email, contraseña) terminados\n\n-- Cambios y modificaciones 13-05-21 \nnuevo sistema de navegación tab bar y stack \n\n---Creación de grupos musicales sin el formato final\n\n--- listado de bandas provisional y perfil provisional 20-05-21\n\n--- perfil que se muestra al cliente  23-05-21\n\n---Perfil del  grupo 24-05-21 -> 26-05-21 puedes modificar todos los datos incluyendo imagenes  y al guardar se actualizan los datos.",
+    "assetBundlePatterns": ["**/*"],
+    "description": "Proyecto de renta de grupos musicales v1.0\n-Se ha realizado el registro y Login de usuarios y grupos musicales\n-El registro de las bandas deberá continuar con el método de pago\n-Sistema de navegación completo\n\n---Cambios y modificaciones 11-05-21\nconfiguraciones de la cuenta (nombre, email, contraseña) terminados\n\n-- Cambios y modificaciones 13-05-21 \nnuevo sistema de navegación tab bar y stack \n\n---Creación de grupos musicales sin el formato final\n\n--- listado de bandas provisional y perfil provisional 20-05-21\n\n--- perfil que se muestra al cliente  23-05-21\n\n---Perfil del  grupo 24-05-21 -> 26-05-21 puedes modificar todos los datos incluyendo imagenes  y al guardar se actualizan los datos.\n\n--- Barra de búsqueda\nse añadió un botón para ir a la barra de búsqueda y la función buscar funciona.",
     "android": {
       "permissions": [
         "CAMERA_ROLL",
         "READ_EXTERNAL_STORAGE",
-        "WRITE_EXTERNAL_STORAGE"
+        "WRITE_EXTERNAL_STORAGE",
+        "READ_CALENDAR",
+        "WRITE_CALENDAR"
       ],
       "package": "com.raulbellosom.proMusic"
     }

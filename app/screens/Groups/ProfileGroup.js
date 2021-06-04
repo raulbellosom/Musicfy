@@ -18,7 +18,7 @@ import Carousel from "../../components/Carousel";
 import { validateNumberPhone } from "../../utils/validations";
 
 import { firebaseApp } from "../../utils/firebase";
-import firebase, { storage } from "firebase/app";
+import firebase from "firebase/app";
 import "firebase/storage";
 import "firebase/firestore";
 
@@ -48,7 +48,7 @@ export default function ProfileGroup(props) {
       toastRef.current.show(
         "Ingrese un numero de telefono valido a 10 digitos"
       );
-    } else if (size(imageSelected) === 0) {
+    } else if (size(imageSelected) === 0 && size(newImageSelected) === 0) {
       toastRef.current.show("Debes subir al menos una foto.");
     } else {
       setIsLoading(true);

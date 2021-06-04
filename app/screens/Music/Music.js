@@ -1,15 +1,18 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { useFocusEffect } from "@react-navigation/core";
+import { Button, Icon } from "react-native-elements";
 
 import { firebaseApp } from "../../utils/firebase";
 import firebase from "firebase/app";
 import "firebase/firestore";
+
 import ListGroups from "../../components/Groups/ListGroups";
 
 const db = firebase.firestore(firebaseApp);
 
-export default function Music() {
+export default function Music(props) {
+  const { navigation } = props;
   const [groups, setGroups] = useState([]);
   const [totalGroups, setTotalGroups] = useState(0);
   const [startGroups, setStartGroups] = useState(null);
@@ -69,10 +72,63 @@ export default function Music() {
 
   return (
     <View>
+      <Buttons navigation={navigation} />
       <ListGroups
         groups={groups}
         handleLoadMore={handleLoadMore}
         isLoading={isLoading}
+      />
+    </View>
+  );
+}
+
+function Buttons(props) {
+  const { navigation } = props;
+  return (
+    <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+      <Button
+        title="Busca"
+        type="solid"
+        raised
+        icon={
+          <Icon
+            type="material-community"
+            name="magnify"
+            size={25}
+            color="#6600A1"
+          />
+        }
+        titleStyle={{ color: "#6600A1" }}
+        buttonStyle={{ backgroundColor: "#fff", borderColor: "#6600A1" }}
+        containerStyle={{
+          margin: 10,
+          width: "45%",
+          alignItems: "stretch",
+          borderColor: "#6600A1",
+        }}
+        onPress={() => navigation.navigate("search")}
+      />
+      <Button
+        title="Filtrar"
+        type="solid"
+        raised
+        icon={
+          <Icon
+            type="material-community"
+            name="filter-variant"
+            size={25}
+            color="#6600A1"
+            // containerStyle={{ alignSelf: "stretch" }}
+          />
+        }
+        titleStyle={{ color: "#6600A1" }}
+        buttonStyle={{ backgroundColor: "#fff", borderColor: "#6600A1" }}
+        containerStyle={{
+          margin: 10,
+          width: "45%",
+          alignItems: "stretch",
+          borderColor: "#6600A1",
+        }}
       />
     </View>
   );

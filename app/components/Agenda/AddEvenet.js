@@ -1,13 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-import AddEvenet from "../../components/Agenda/AddEvenet";
+import Calendario from "../Calendario";
 
-export default function Agenda(props) {
+export default function AddEvenet(props) {
   const { navigation } = props;
+
   return (
     <View>
-      <AddEvenet navigation={navigation} />
+      <Calendario />
     </View>
   );
 }

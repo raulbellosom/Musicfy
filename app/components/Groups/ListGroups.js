@@ -64,9 +64,13 @@ function Group(props) {
         </View>
         <View>
           <Text style={styles.groupName}>{name}</Text>
-          <Text style={styles.groupAddress}>{address}</Text>
+          <Text style={styles.groupAddress}>
+            {size(address) < 35 ? address : address.substr(0, 35) + "..."}
+          </Text>
           <Text style={styles.groupDescription}>
-            {description.substr(0, 90)}...
+            {size(description) < 100
+              ? description
+              : description.substr(0, 100) + "..."}
           </Text>
         </View>
       </View>
@@ -102,6 +106,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     flexDirection: "row",
     margin: 10,
+    marginBottom: 5,
+    marginTop: 5,
     borderRadius: 5,
   },
   viewGroupImage: {
@@ -116,16 +122,18 @@ const styles = StyleSheet.create({
   },
   groupName: {
     fontWeight: "bold",
+    color: "#6600A1",
     marginTop: 5,
   },
   groupAddress: {
     paddingTop: 2,
-    color: "grey",
+    color: "black",
+    width: 250,
   },
   groupDescription: {
     paddingTop: 2,
+    maxWidth: "80%",
     color: "grey",
-    width: 250,
   },
   notFoundGroups: {
     marginTop: 10,

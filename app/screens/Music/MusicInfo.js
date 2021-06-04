@@ -64,7 +64,7 @@ export default function MusicInfo(props) {
 
 function Social() {
   return (
-    <View style={{ alignItems: "center" }}>
+    <View>
       <Text style={styles.social}>Redes Sociales</Text>
       {/* <SocialIcon button type="facebook" title="Los Tigres del Norte" />
       <SocialIcon
@@ -74,10 +74,41 @@ function Social() {
         // style={{ backgroundColor: "red" }}
       />
       <SocialIcon button type="youtube" title="Los Tigres del Norte" /> */}
-      <View style={{ flexDirection: "row", justifyContent: "center" }}>
-        <SocialIcon light type="facebook" />
-        <SocialIcon light type="instagram" />
-        <SocialIcon light type="youtube" />
+      <View style={{ flexDirection: "column" }}>
+        {/* <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <SocialIcon light type="facebook" />
+          <Text>Los Patos Donalds</Text>
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <SocialIcon light type="instagram" />
+          <Text>Los Patos Donalds</Text>
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <SocialIcon title="Los Patos Donalds" light type="youtube" />
+          <Text>Los Patos Donalds</Text>
+        </View> */}
+
+        <SocialIcon button title="Los Patos Donalds" light type="facebook" />
+        <SocialIcon button title="Los Patos Donalds" light type="instagram" />
+        <SocialIcon button title="Los Patos Donalds" light type="youtube" />
       </View>
     </View>
   );
@@ -141,6 +172,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontStyle: "italic",
     color: "#3e3e3e",
+    marginLeft: 10,
   },
   contacto: {
     fontWeight: "bold",
